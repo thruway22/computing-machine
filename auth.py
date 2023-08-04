@@ -1,11 +1,15 @@
 import json
-import streamlit as st
 from google.cloud import firestore
 from google.oauth2 import service_account
 
-class Database:
-    def __init__(self):
-        self.key = json.loads(st.secrets['textkey'])
-        self.credentials = service_account.Credentials.from_service_account_info(self.key)
-        self.client = firestore.Client(credentials=self.credentials, project='my-family-fund')
-        self.db = self.client.collection('holdings')
+def service_account():
+    return service_account.Credentials.from_service_account_info(json.loads(st.secrets['textkey']))
+
+def client():
+    return firestore.Client(credentials=service_account(), project='my-family-fund')
+
+def db():
+    return client().collection('holdings')
+
+db = db()
+
