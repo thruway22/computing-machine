@@ -30,7 +30,7 @@ st.write([
 
 docs = db.stream()
 
-items = list(map(lambda x: {**x.to_dict(), 'id': x.id}, docs))
+items = list(map(lambda x: {'id': x.id, **x.to_dict()}, docs))
 
 df = pd.DataFrame(items) # , columns=['id', 'email']
 #df.set_index('id', inplace=True)
