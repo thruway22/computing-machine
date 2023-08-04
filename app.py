@@ -15,7 +15,8 @@ st.title('Test')
 # creds = service_account.Credentials.from_service_account_info(key_dict)
 # db = firestore.Client(credentials=creds, project="my-family-fund")
 
-db = auth.Database().get_db()
+conn = auth.Connect()
+db = conn.get_collection('holdings')
 
 # Create a reference to the Google post.
 # doc_ref = db.collection("holdings").document("1120.SR")
