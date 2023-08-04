@@ -23,8 +23,18 @@ st.write([
 ])
 
 
-holdings = list(conn.get_collection('holdings').stream())
+# holdings = list(conn.get_collection('holdings').stream())
 
-users_dict = list(map(lambda x: x.to_dict(), holdings))
-df = pd.DataFrame(users_dict)
+# users_dict = list(map(lambda x: x.to_dict(), holdings))
+# df = pd.DataFrame(users_dict)
+
+docs = db.stream()
+
+items = list(map(lambda x: {**x.to_dict(), 'id': x.id}, docs))
+
+df = pd.DataFrame(items) # , columns=['id', 'email']
+df.set_index('id', inplace=True)
+
+
+
 st.dataframe(df)
