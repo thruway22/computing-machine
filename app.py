@@ -1,5 +1,5 @@
 import streamlit as st
-from auth import Database
+from auth import db
 
 st.title('Test')
 
@@ -15,7 +15,7 @@ st.title('Test')
 # creds = service_account.Credentials.from_service_account_info(key_dict)
 # db = firestore.Client(credentials=creds, project="my-family-fund")
 
-db = Database()
+# db = Database()
 
 # Create a reference to the Google post.
 # doc_ref = db.collection("holdings").document("1120.SR")
