@@ -37,6 +37,6 @@ df = pd.DataFrame(items) # , columns=['id', 'email']
 
 
 
-df['value'] = yf.Ticker(df.ticker)['previousClose']
+df['value'] = yf.Ticker(df.ticker).info['previousClose']
 
 st.dataframe(df) #hide_index=None
