@@ -33,5 +33,5 @@ for doc in docs:
     st.write(f"{doc.id} => {doc.to_dict()}")
 
 st.write([
-    x for x in docs
+    doc.id for doc in docs
 ])
