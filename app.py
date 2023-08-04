@@ -23,7 +23,6 @@ st.write([
 ])
 
 
-db = firestore.Client()
 holdings = list(conn.get_collection('holdings').stream())
 
 users_dict = list(map(lambda x: x.to_dict(), holdings))
