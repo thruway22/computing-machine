@@ -4,3 +4,4 @@ yfinance
 streamlit
 matplotlib
 google-cloud-firestore
+google-auth
