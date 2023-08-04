@@ -37,4 +37,4 @@ df = pd.DataFrame(items) # , columns=['id', 'email']
 
 
 
-st.dataframe(df)
+st.dataframe(df, hide_index=True)
