@@ -18,16 +18,16 @@ st.title('Test')
 db = Database()
 
 # Create a reference to the Google post.
-doc_ref = db.collection("holdings").document("1120.SR")
+# doc_ref = db.collection("holdings").document("1120.SR")
 
 # Then get the data at that reference.
-doc = doc_ref.get()
+# doc = doc_ref.get()
 
-# Let's see what we got!
-st.write("The id is: ", doc.id)
-st.write("The contents are: ", doc.to_dict())
+# # Let's see what we got!
+# st.write("The id is: ", doc.id)
+# st.write("The contents are: ", doc.to_dict())
 
-docs = db.collection("holdings").get()
+docs = db.get()
 
 for doc in docs:
     st.write(f"{doc.id} => {doc.to_dict()}")
