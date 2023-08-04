@@ -33,7 +33,7 @@ docs = db.stream()
 items = list(map(lambda x: {**x.to_dict(), 'id': x.id}, docs))
 
 df = pd.DataFrame(items) # , columns=['id', 'email']
-df.set_index('id', inplace=True)
+#df.set_index('id', inplace=True)
 
 
 
