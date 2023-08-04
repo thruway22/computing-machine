@@ -1,7 +1,5 @@
 import streamlit as st
-from google.cloud import firestore
-from google.oauth2 import service_account
-import json
+from auth import Database
 
 st.title('Test')
 
@@ -13,9 +11,11 @@ st.title('Test')
 # # Authenticate to Firestore with the JSON account key.
 # db = firestore.Client.from_service_account_json("firestore-key.json")
 
-key_dict = json.loads(st.secrets["textkey"])
-creds = service_account.Credentials.from_service_account_info(key_dict)
-db = firestore.Client(credentials=creds, project="my-family-fund")
+# key_dict = json.loads(st.secrets["textkey"])
+# creds = service_account.Credentials.from_service_account_info(key_dict)
+# db = firestore.Client(credentials=creds, project="my-family-fund")
+
+db = Database()
 
 # Create a reference to the Google post.
 doc_ref = db.collection("holdings").document("1120.SR")
