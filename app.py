@@ -31,3 +31,7 @@ docs = db.collection("holdings").stream()
 
 for doc in docs:
     st.write(f"{doc.id} => {doc.to_dict()}")
+
+st.write([
+    x for x in docs
+])
