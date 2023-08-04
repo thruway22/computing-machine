@@ -21,3 +21,6 @@ class Database:
         self.client = firestore.Client(credentials=self.credentials, project='my-family-fund')
         self.db = self.client.collection('holdings')
 
+    def get_db():
+        return self.db
+
