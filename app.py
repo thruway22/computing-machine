@@ -35,8 +35,9 @@ items = list(map(lambda x: {'ticker': x.id, **x.to_dict()}, docs))
 df = pd.DataFrame(items) # , columns=['id', 'email']
 #df.set_index('id', inplace=True)
 
+for ticker in df['ticker']:
+    df['value'] = yf.Ticker(ticker).info['previousClose']
 
-
-df['value'] = yf.Ticker(df.ticker).info['previousClose']
+df['value'] = yf.Ticker(df['ticker']).info['previousClose']
 
 st.dataframe(df) #hide_index=None
