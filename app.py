@@ -35,10 +35,11 @@ items = list(map(lambda x: {'ticker': x.id, **x.to_dict()}, docs))
 df = pd.DataFrame(items) # , columns=['id', 'email']
 #df.set_index('id', inplace=True)
 
-values = []
+prices = []
 for ticker in df['ticker']:
     values.append(yf.Ticker(ticker).info['previousClose'])
 
-df['value'] = values
+df['price'] = prices
+df['value'] = df.price * df.quantity
 
 st.dataframe(df) #hide_index=None
