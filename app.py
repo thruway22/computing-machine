@@ -27,7 +27,7 @@ doc = doc_ref.get()
 st.write("The id is: ", doc.id)
 st.write("The contents are: ", doc.to_dict())
 
-docs = db.collection("holdings").stream()
+docs = db.collection("holdings").get()
 
 for doc in docs:
     st.write(f"{doc.id} => {doc.to_dict()}")
