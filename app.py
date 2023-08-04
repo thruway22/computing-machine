@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import yfinance as yf
 import streamlit as st
 import auth
 
@@ -13,15 +14,14 @@ st.title('Test')
 conn = auth.Connect()
 db = conn.get_collection('holdings')
 
-docs = db.get()
+# docs = db.get()
 
-for doc in docs:
-    st.write(f"{doc.id} => {doc.to_dict()}")
+# for doc in docs:
+#     st.write(f"{doc.id} => {doc.to_dict()}")
 
-st.write([
-    doc.id for doc in docs
-])
-
+# st.write([
+#     doc.id for doc in docs
+# ])
 
 # holdings = list(conn.get_collection('holdings').stream())
 
@@ -36,5 +36,7 @@ df = pd.DataFrame(items) # , columns=['id', 'email']
 #df.set_index('id', inplace=True)
 
 
+
+df['value'] = yf.Ticker(df.ticker)['previousClose']
 
 st.dataframe(df) #hide_index=None
