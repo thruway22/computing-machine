@@ -37,9 +37,11 @@ df = pd.DataFrame(items) # , columns=['id', 'email']
 
 prices = []
 for ticker in df['ticker']:
-    values.append(yf.Ticker(ticker).info['previousClose'])
+    prices.append(yf.Ticker(ticker).info['previousClose'])
 
 df['price'] = prices
 df['value'] = df.price * df.quantity
+
+st.metric('NAV', df.value.sum())
 
 st.dataframe(df) #hide_index=None
